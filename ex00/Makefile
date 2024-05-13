@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: damendez <damendez@student.42barcelona.    +#+  +:+       +#+         #
+#    By: damendez <damendez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:20:41 by damendez          #+#    #+#              #
-#    Updated: 2024/05/10 10:20:41 by damendez         ###   ########.fr        #
+#    Updated: 2024/05/13 14:29:25 by damendez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC_FILES	= megaphone.cpp
 
 # addprefix?: 
 
-OBJ_DIR		= obj/
+OBJ_DIR		= objs/
 OBJ_FILES	= $(SRC_FILES:.cpp=.o)
 OBJS		= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
@@ -42,8 +42,7 @@ $(OBJ_DIR)%.o: %.cpp
 clean:
 		$(RM) $(OBJS) $(DEPS)
 
-fclean:
-		clean
+fclean: clean
 		$(RM) -r $(OBJ_DIR)
 		$(RM) $(NAME)
 
