@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: damendez <damendez@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 10:20:27 by damendez          #+#    #+#             */
-/*   Updated: 2024/05/10 10:20:27 by damendez         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:35:54 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@
 
 int main(int argc, char **argv)
 {
-    int i;
-    int j;
+    int     i;
+    size_t  j;
 
     if (argc > 1)
     {
-        i = -1;
+        i = 0;
         while (argv[++i])
         {
             j = -1;
             while (++j < std::strlen(argv[i]))
-                std::cout << toupper(argv[i][j]);
+                std::cout << (char)toupper(argv[i][j]);
         }
     }
     else
