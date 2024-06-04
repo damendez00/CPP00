@@ -13,7 +13,21 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include <iostream>
-#include <string>
+# include "Agenda.h"
 
-#include "contact.hpp"
+class PhoneBook
+{
+    private:
+        unsigned int    i;
+        unsigned int    not_empty;
+        std::string     fill_info(std::string str);
+        std::string     get_number(void);
+    public:
+        PhoneBook();
+        ~PhoneBook();
+        void            add_contact(Contact contact);
+        void            search_contact(Contact contact);
+        Contact         _contact[8];
+};
+
+#endif
