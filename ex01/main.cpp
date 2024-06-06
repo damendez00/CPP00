@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: damendez <damendez@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 21:27:00 by damendez          #+#    #+#             */
-/*   Updated: 2024/05/19 21:27:00 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:31:59 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
-#include "contact.hpp"
+#include "Agenda.h"
 
 /*
  * 1. Initialize input string and needed classes
@@ -34,13 +33,13 @@ int main(void)
             input[i] = std::toupper(input[i]);
         if (input == "ADD")
             phonebook.add_contact(contact);
-        else if (input == "SEARCH")
-            phonebook.search_contact(contact);
-        else if (input == "EXIT")
-        { 
-            std::cout << "Exiting" << std::endl;
-            return (0);
-        }
+        // else if (input == "SEARCH")
+        //     phonebook.search_contact(contact);
+        // else if (input == "EXIT")
+        // { 
+        //     std::cout << "Exiting" << std::endl;
+        //     return (0);
+        // }
         else
             std::cout << ERROR_MSG << std::endl;
     }

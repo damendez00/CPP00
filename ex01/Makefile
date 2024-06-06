@@ -3,16 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: damendez <damendez@student.42barcelona.    +#+  +:+       +#+         #
+#    By: damendez <damendez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:20:41 by damendez          #+#    #+#              #
-#    Updated: 2024/05/10 10:20:41 by damendez         ###   ########.fr        #
+#    Updated: 2024/06/06 19:51:59 by damendez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= Phonebook
 
-SRC_FILES	= phonebook.cpp contact.cpp main.cpp
+SRC_FILES	= PhoneBook.cpp Contact.cpp main.cpp
+
+HEADER		= Agenda.h PhoneBook.hpp Contact.hpp
 
 OBJ_DIR		= obj/
 OBJ_FILES	= $(SRC_FILES:.cpp=.o)
@@ -22,28 +24,24 @@ DEP_FILES	= $(SRC_FILES:.cpp=.d)
 DEPS		= $(addprefix $(OBJ_DIR), $(DEP_FILES))
 
 CC			= g++
-CFLAGS		= -std=c++98 -Wall -Wextra -Werror -MMD
+CFLAGS		= -std=c++98 -Wall -Wextra -Werror -MMD -fsanitize=address
 RM			= rm -f
 INCLUDE		= -I ./
+
+%.o: %.cpp Makefile ${HEADER}
+		@${CC} ${CFLAGS} -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-		$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) -o $@
-
-$(OBJ_DIR):
-		mkdir -p $@
-
-$(OBJ_DIR)%.o: %.cpp
-		$(CC) $(CFLAGS) -c $< -o $@
+		$(CC) $(CFLAGS) $(OBJS) -o $@
 
 clean:
 		$(RM) $(OBJS) $(DEPS)
 
 fclean:
 		clean
-		$(RM) -r $(OBJ_DIR)
-		$(RM) $(NAME)
+		$(RM) $(OBJ_DIR) $(NAME)
 
 re: fclean all
 
