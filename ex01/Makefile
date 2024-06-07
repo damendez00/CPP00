@@ -6,7 +6,7 @@
 #    By: damendez <damendez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:20:41 by damendez          #+#    #+#              #
-#    Updated: 2024/06/06 19:51:59 by damendez         ###   ########.fr        #
+#    Updated: 2024/06/07 17:54:14 by damendez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,24 +24,27 @@ DEP_FILES	= $(SRC_FILES:.cpp=.d)
 DEPS		= $(addprefix $(OBJ_DIR), $(DEP_FILES))
 
 CC			= g++
-CFLAGS		= -std=c++98 -Wall -Wextra -Werror -MMD -fsanitize=address
+CFLAGS		= -std=c++98 -Wall -Wextra -Werror -MMD #-fsanitize=address
 RM			= rm -f
 INCLUDE		= -I ./
-
-%.o: %.cpp Makefile ${HEADER}
-		@${CC} ${CFLAGS} -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -o $@
+		$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) -o $@
+
+$(OBJ_DIR):
+		mkdir -p $@
+
+$(OBJ_DIR)%.o: %.cpp
+		$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 		$(RM) $(OBJS) $(DEPS)
 
-fclean:
-		clean
-		$(RM) $(OBJ_DIR) $(NAME)
+fclean: clean
+		$(RM) -r $(OBJ_DIR)
+		$(RM) $(NAME)
 
 re: fclean all
 

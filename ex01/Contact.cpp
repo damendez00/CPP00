@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:04:43 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/06 19:04:22 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:17:37 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Contact::~Contact()
 std::string get_number(void)
 {
     std::string input;
+    unsigned int j;  
 
     while (input.length() < 1)
     {
@@ -30,12 +31,16 @@ std::string get_number(void)
         std::cout << std::setw(16) << "Phone Number:";
         if (!std::getline(std::cin, input))
             break;
-        for (long unsigned int j = 0; j < input.length(); j++)
-            if (input[j] < '0' && input[j] > '9')
+        j = 0;
+        while (j < input.length())
+        {
+            if (input[j] < '0' || input[j] > '9')
             {
-                std::cout << "Phone number must only be numbers";
+                std::cout << "Phone number must only be numbers" << std::endl;
                 input.erase();
             }
+            j++;
+        }
     }
     return (input);
 }
