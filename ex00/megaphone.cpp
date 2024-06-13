@@ -28,6 +28,7 @@
 */
 
 #include <iostream>
+#include <cstring>
 
 int main(int argc, char **argv)
 {
@@ -40,7 +41,7 @@ int main(int argc, char **argv)
         while (argv[++i])
         {
             j = -1;
-            while (++j < std::strlen(argv[i]))
+            while (++j < strlen(argv[i]))
                 std::cout << (char)toupper(argv[i][j]);
         }
     }

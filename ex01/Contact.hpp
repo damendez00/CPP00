@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: damendez <damendez@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:25:25 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/04 19:25:25 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:39:36 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Contact
         Contact();
         ~Contact();
         void            add_new(Contact *contact);
-        void            print_contact(Contact *contact);
+        void            print_contacts(Contact *contact, unsigned int index);
         void            print_all(Contact *contact);
 };
 

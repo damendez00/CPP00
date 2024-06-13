@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: damendez <damendez@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:33 by damendez          #+#    #+#             */
-/*   Updated: 2024/05/19 22:48:33 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:09:45 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class PhoneBook
 {
     private:
         unsigned int    i;
-        unsigned int    not_empty;
+        unsigned int    contacts_flag;
         std::string     fill_info(std::string str);
         std::string     get_number(void);
     public:
@@ -27,6 +27,7 @@ class PhoneBook
         ~PhoneBook();
         void            add_contact(Contact contact);
         void            search_contact(Contact contact);
+        void            print_header(void);
         Contact         _contact[8];
 };
 
