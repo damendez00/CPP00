@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:04:43 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/13 16:39:36 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:54:06 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,56 @@ void Contact::print_contacts(Contact *contact, unsigned int index)
         std::cout << std::right << std::setw(9) << contact->nickname.substr(0, 9) << "." << "|";
     else
         std::cout << std::right << std::setw(10) << contact->nickname << std::endl << std::endl;
+}
+
+void Contact::print_select(Contact *contact)
+{
+    std::cout << std::endl << ">> Contact information << " << std::endl << std::endl;
+	std::cout << "- First name: " << contact->first_name << std::endl;
+	std::cout << "- Last name: " << contact->last_name << std::endl;
+	std::cout << "- Nickname: " << contact->nickname << std::endl;
+	std::cout << "- Phone number: " << contact->phone_number << std::endl;
+	std::cout << "- Darkest secret: " << contact->darkest_secret << std::endl << std::endl;
+}
+
+int Contact::choose_index(unsigned int flag)
+{
+    std::string input;
+    unsigned int num;
+    unsigned int j;
+
+    // Ask user for index number
+    num = 0;
+    while (input.length() < 1)
+    {
+		std::cout << "Which contact do you want to see? ";
+        if (!std::getline(std::cin, input))
+            break ;
+        // Check index number value
+        j = 0;
+        while (j < input.length())
+        {
+            if (input[j] < 0 || input[j] > 9)
+            {
+                // ? : ask user for a valid index number and erase current input
+                std::cout << "Enter a valid index number ";
+                input.erase();
+            }
+            j++;
+        }
+        // change string to int
+        if (input.length() > 0)
+        {
+            num = stoi(input);
+            // Index number cant be greater then number of contacts or less than 1
+            if (num > flag || num < 1)
+            {
+                std::cout << "Enter a valid index" << std::endl;
+                input.erase();
+            }
+        }
+    }
+    return (num);
 }
 
 std::string get_number(void)

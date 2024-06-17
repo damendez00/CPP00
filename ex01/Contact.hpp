@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:25:25 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/13 16:39:36 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:48:07 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class Contact
         void            add_new(Contact *contact);
         void            print_contacts(Contact *contact, unsigned int index);
         void            print_all(Contact *contact);
+        int             choose_index(unsigned int flag);
+        void            print_select(Contact *contact);
 };
 
 #endif
