@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:10 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/17 19:48:53 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:59:57 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    PhoneBook::search_contact(Contact contact)
             j++;
         }
         index = contact.choose_index(contacts_flag);
-        contact.print_select(&_contact[index - 1]);
+        contact.print_select(&_contact[index]);
     }
 }
 
