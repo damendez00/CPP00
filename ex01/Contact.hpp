@@ -6,32 +6,37 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:25:25 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/17 19:48:07 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:44:23 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include "Agenda.h"
+#include <iomanip>  // manage input/output formatting
+#include <iostream>
+#include <limits>
 
 class Contact
 {
     private:
-        std::string     first_name;
-        std::string     last_name;
-        std::string     nickname;
-        std::string     phone_number;
-        std::string     darkest_secret;
+        std::string     _firstName;
+        std::string     _lastName;
+        std::string     _nickname;
+        std::string     _phoneNumber;
+        std::string     _darkestSecret;
+        int             _index; // ?
+
+        std::string _printLen(std::string) const; // ? TO-DO
+        std::string _getInput(std::string);// ? TO-DO
         
     public:
         Contact();
         ~Contact();
-        void            add_new(Contact *contact);
-        void            print_contacts(Contact *contact, unsigned int index);
-        void            print_all(Contact *contact);
-        int             choose_index(unsigned int flag);
-        void            print_select(Contact *contact);
+        void    init(void);                 // ? TO-DO
+        void    view(int index) const;      // ? TO-DO
+        void    display(int index) const;   // ? TO-DO
+        void    setIndex(int i);            // ? TO-DO
 };
 
 #endif

@@ -6,41 +6,32 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 21:27:00 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/17 19:50:10 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:12:59 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Agenda.h"
+#include "PhoneBook.hpp"
 
-/*
- * 1. Initialize input string and needed classes
- * 1. Get user input (start-up output and input error output)
- * 2. Call phonebook method based on input (ADD, SEARCH, EXIT)
-*/
 int main(void)
 {
-    std::string input;
-    PhoneBook   phonebook;
-    Contact     contact;
+    std::string input = "";
+    PhoneBook   phoneBook;
 
-    std::cout << "Enter a command: 'ADD', 'SEARCH', 'EXIT'." <<std::endl;
-    while (true)
+    std::cout << "Enter a command: 'ADD', 'SEARCH', 'EXIT'." << std::endl;
+    // while the input string isnot EXIT (.compare), check for ADD or SEARCH
+    while (input.compare("EXIT") != 0)
     {
-        std::cout << ">";
-        if (!std::getline(std::cin, input))
-            return (1);
-        for (int i = 0; input[i]; i++)
-            input[i] = std::toupper(input[i]);
-        if (input == "ADD")
-            phonebook.add_contact(contact);
-        else if (input == "SEARCH")
-            phonebook.search_contact(contact);
-        else if (input == "EXIT")
-        { 
-            std::cout << "Exiting" << std::endl;
-            return (0);
+        if (input.compare("ADD") == 0)
+            phoneBook.addContact();
+        else if (input.compare("SEARCH") == 0)
+        {
+            phoneBook.printContacts();
+            phoneBook.search();
         }
         else
-            std::cout << ERROR_MSG << std::endl;
+            std::cout << input << " is an invalid command." << std::endl;
+        std::cout << ">" << std::flush;
+        std::cin >> input;
     }
+    return (0);
 }

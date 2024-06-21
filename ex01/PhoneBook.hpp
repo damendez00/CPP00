@@ -6,29 +6,27 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:33 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/13 17:09:45 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/21 19:38:29 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-# include "Agenda.h"
+#include "Contact.hpp"
 
 class PhoneBook
 {
     private:
-        unsigned int    i;
-        unsigned int    contacts_flag;
-        std::string     fill_info(std::string str);
-        std::string     get_number(void);
+        Contact         _contacts[8];
+        //int             _readInput(void) const; // ? TO-DO
+
     public:
         PhoneBook();
         ~PhoneBook();
-        void            add_contact(Contact contact);
-        void            search_contact(Contact contact);
-        void            print_header(void);
-        Contact         _contact[8];
+        void            addContact(void); // TO-DO
+        //void            printContacts(void) const;  // TO-DO
+        //void            search(void) const; // TO-DO
 };
 
 #endif

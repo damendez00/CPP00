@@ -6,7 +6,7 @@
 #    By: damendez <damendez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:20:41 by damendez          #+#    #+#              #
-#    Updated: 2024/06/19 16:37:41 by damendez         ###   ########.fr        #
+#    Updated: 2024/06/21 15:59:22 by damendez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= Phonebook
 
 SRC_FILES	= PhoneBook.cpp Contact.cpp main.cpp
 
-HEADER		= Agenda.h PhoneBook.hpp Contact.hpp
+HEADER		= PhoneBook.hpp Contact.hpp
 
 OBJ_DIR		= obj/
 OBJ_FILES	= $(SRC_FILES:.cpp=.o)
@@ -25,19 +25,19 @@ DEPS		= $(addprefix $(OBJ_DIR), $(DEP_FILES))
 
 CC			= g++
 CFLAGS		= -std=c++98 -Wall -Wextra -Werror -MMD -g #-fsanitize=address
-RM			= rm -f
+RM			= rm -rf
 INCLUDE		= -I ./
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS)
-		$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) -o $@
+$(NAME): $(HEADER) $(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) -o $@
 
 $(OBJ_DIR):
 		mkdir -p $@
 
-$(OBJ_DIR)%.o: %.cpp
-		$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o: %.cpp $(HEADER)
+		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 		$(RM) $(OBJS) $(DEPS)
