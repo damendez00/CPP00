@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:10 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/21 19:29:13 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:56:32 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ PhoneBook::~PhoneBook()
 {
 }
 
-// void    PhoneBook::print_header(void)
-// {
-//     std::cout << "      >> CHOOSE CONTACT <<       " << std::endl << std::endl;
-//     std::cout << std::right << std::setw(10) << "Index|";
-//     std::cout << std::right << std::setw(10) << " First Name|";
-//     std::cout << std::right << std::setw(10) << " Last Name|";
-//     std::cout << std::right << std::setw(10) << " Nickname " << std::endl;
-// }
+void    PhoneBook::printContacts(void) const
+{
+    std::cout << "------------- PHONBOOK CONTACTS -------------" << std::endl;
+    for (size_t i = 0; i < 8; i++) {
+        this->_contacts[i].view(i);
+    }
+    std::cout << std::endl;
+}
 
 void    PhoneBook::addContact(void)
 {

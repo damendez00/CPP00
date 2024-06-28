@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:25:25 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/21 18:44:23 by damendez         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:56:32 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ class Contact
         std::string     _nickname;
         std::string     _phoneNumber;
         std::string     _darkestSecret;
-        int             _index; // ?
+        int             _index;
 
-        std::string _printLen(std::string) const; // ? TO-DO
-        std::string _getInput(std::string);// ? TO-DO
+        std::string _printStr(std::string) const; // ? TO-DO
+        std::string _getInput(std::string) const;
         
     public:
         Contact();
         ~Contact();
         void    init(void);                 // ? TO-DO
-        void    view(int index) const;      // ? TO-DO
+        void    view(int index) const;      // TO-DO
         void    display(int index) const;   // ? TO-DO
         void    setIndex(int i);            // ? TO-DO
 };
