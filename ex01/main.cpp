@@ -27,8 +27,8 @@ int main(void)
             phoneBook.addContact();
         else if (input.compare("SEARCH") == 0)
         {
-            phoneBook.printContacts(); // TO-DO
-            //phoneBook.search();
+            phoneBook.printContacts();
+            phoneBook.search(); // TO DO
         }
         else
             std::cout << input << " is an invalid command." << std::endl;

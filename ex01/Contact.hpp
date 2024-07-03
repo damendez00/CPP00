@@ -27,16 +27,17 @@ class Contact
         std::string     _darkestSecret;
         int             _index;
 
-        std::string _printStr(std::string) const; // ? TO-DO
+        std::string _printStr(std::string) const;
         std::string _getInput(std::string) const;
+        std::string _getNumber(std::string) const;
         
     public:
         Contact();
         ~Contact();
-        void    init(void);                 // ? TO-DO
-        void    view(int index) const;      // TO-DO
-        void    display(int index) const;   // ? TO-DO
-        void    setIndex(int i);            // ? TO-DO
+        void    init(void);
+        void    view(int index) const;
+        void    display(int index) const;
+        void    setIndex(int i);
 };
 
 #endif

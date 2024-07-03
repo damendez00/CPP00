@@ -29,6 +29,34 @@ void    PhoneBook::printContacts(void) const
     std::cout << std::endl;
 }
 
+int     PhoneBook::_readIndex() const {
+    int     input = -1;
+    bool    valid = false;
+    do
+    {
+        std::cout << "Please enter the contact index: " << std::flush;
+        std::cin >> input;
+        if (std::cin.good() && (input >= 0 && input <= 8)) {
+            valid = true;
+        } else {
+            //reset the buffer's state and empty
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+            std::cout << "Invalid index; please re-enter." << std::endl;
+        }
+    } while (!valid);
+    return (input);
+}
+
+
+void    PhoneBook::search(void)
+{
+    int  index;
+
+    index = this->_readIndex();
+    this->_contacts[index].display(index);
+}
+
 void    PhoneBook::addContact(void)
 {
     static int  i; // i keeps its value between func calls

@@ -20,13 +20,14 @@ class PhoneBook
     private:
         Contact         _contacts[8];
         int             _readIndex(void) const; // TO-DO
+        int             contactsNum;
 
     public:
         PhoneBook();
         ~PhoneBook();
         void            addContact(void);
-        void            printContacts(void) const;  // TO-DO
-        //void            search(void) const; // TO-DO
+        void            printContacts(void) const;
+        void            search(void);
 };
 
 #endif
