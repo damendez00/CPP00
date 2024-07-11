@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:33 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/28 16:56:32 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:31:31 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class PhoneBook
 {
     private:
         Contact         _contacts[8];
-        int             _readIndex(void) const; // TO-DO
+        int             _readIndex(void) const;
         int             contactsNum;
 
     public:
@@ -27,7 +27,7 @@ class PhoneBook
         ~PhoneBook();
         void            addContact(void);
         void            printContacts(void) const;
-        void            search(void);
+        void            search(void) const;
 };
 
 #endif

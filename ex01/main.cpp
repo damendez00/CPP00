@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 21:27:00 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/28 16:56:32 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:21:38 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ int main(void)
 {
     std::string input = "";
     PhoneBook   phoneBook;
-
+    
     std::cout << "Enter a command: 'ADD', 'SEARCH', 'EXIT'." << std::endl;
-    // while the input string isnot EXIT (.compare), check for ADD or SEARCH
     while (input.compare("EXIT") != 0)
     {
         std::cout << ">" << std::flush;
-        std::cin >> input;
-        if (input.compare("ADD") == 0)
+        if (!getline(std::cin, input))
+            break;
+        else if (input.compare("ADD") == 0)
             phoneBook.addContact();
         else if (input.compare("SEARCH") == 0)
         {
             phoneBook.printContacts();
-            phoneBook.search(); // TO DO
+            phoneBook.search();
         }
-        else
+        else if (input.compare("EXIT") != 0 && input.length() > 0)
             std::cout << input << " is an invalid command." << std::endl;
     }
     return (0);

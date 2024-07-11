@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:10 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/28 16:56:32 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:26:42 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int     PhoneBook::_readIndex() const {
     {
         std::cout << "Please enter the contact index: " << std::flush;
         std::cin >> input;
-        if (std::cin.good() && (input >= 0 && input <= 8)) {
+        if (std::cin.eof())
+            break;
+        else if (std::cin.good() && (!std::cin.eof() && (input >= 0 && input <= 7))) {
             valid = true;
         } else {
             //reset the buffer's state and empty
@@ -48,20 +50,20 @@ int     PhoneBook::_readIndex() const {
     return (input);
 }
 
-
-void    PhoneBook::search(void)
+void    PhoneBook::search(void) const
 {
     int  index;
 
     index = this->_readIndex();
-    this->_contacts[index].display(index);
+    if (index != -1)
+        this->_contacts[index].display(index);
 }
 
 void    PhoneBook::addContact(void)
 {
-    static int  i; // i keeps its value between func calls
+    static int  i;
 
-    this->_contacts[i % 8].init(); // this points to current instance of the methods class
-    this->_contacts[i % 8].setIndex(i % 8); // set the index of current contact
+    this->_contacts[i % 8].init();
+    this->_contacts[i % 8].setIndex(i % 8);
     i++;
 }

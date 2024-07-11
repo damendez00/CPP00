@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:04:43 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/28 17:00:24 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:22:20 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void    Contact::display(int index) const {
     std::cout << "First Name:\t" << this->_firstName << std::endl;
     std::cout << "Last Name:\t" << this->_lastName << std::endl;
     std::cout << "Nickname:\t" << this->_nickname << std::endl;
+    std::cout << "Phone Number:\t" << this->_phoneNumber << std::endl;
+    std::cout << "Darkest Secret:\t" << this->_darkestSecret << std::endl;
     std::cout << std::endl;
 }
 
@@ -57,14 +59,20 @@ std::string Contact::_getInput(std::string str) const {
     bool        valid = false;
     do
     {
+        if (std::cin.eof())
+            break;
         std::cout << str << std::flush;
         std::getline(std::cin, input);
-        if (std::cin.good() && !input.empty())
+        if (std::cin.eof())
+            break;
+        // if (std::cin.good() && !input.empty())
+        //     valid = true;
+        // else {
+        //     std::cin.clear();
+        //     std::cout << "Invalid input; please try again." << std::endl;
+        // }
+        else if (std::cin.good() && !input.empty())
             valid = true;
-        else {
-            std::cin.clear();
-            std::cout << "Invalid input; please try again." << std::endl;
-        }
     } while (!valid);
     return (input);
 }
@@ -75,9 +83,13 @@ std::string Contact::_getNumber(std::string str) const {
     size_t      i = 0;
     do
     {
+        if (std::cin.eof())
+            break;
         std::cout << str << std::flush;
         std::getline(std::cin, input);
-        if (std::cin.good() && !input.empty()){
+        if (std::cin.eof())
+            break;
+        else if (std::cin.good() && !input.empty()){
             valid = true;
             while (i < input.length()) {
                 if (!isdigit(input[i])) {
@@ -98,7 +110,7 @@ std::string Contact::_getNumber(std::string str) const {
 
 void    Contact::init(void)
 {
-    std::cin.ignore();
+    //std::cin.ignore();
     this->_firstName = this->_getInput("Please enter a first name: ");
     this->_lastName = this->_getInput("Please enter last name: ");
     this->_nickname = this->_getInput("Please enter a nickname: ");
