@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:10 by damendez          #+#    #+#             */
-/*   Updated: 2024/07/12 13:12:09 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/13 12:11:46 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,50 @@ void    PhoneBook::printContacts(void) const
     std::cout << std::endl;
 }
 
-    int     PhoneBook::_readIndex() const {
-        int     input = -1;
-        bool    valid = false;
-        do
-        {
-            std::cout << "Please enter the contact index: " << std::flush;
-            std::cin >> input;
-            if (std::cin.eof())
+int PhoneBook::_readIndex() const {
+    std::string input;
+    int index = -1;
+    bool valid = false;
+    int     i = -1;
+
+    do {
+        std::cout << "Please enter the contact index (0-7): " << std::flush;
+        // Handle EOF or empty input
+        if (!std::getline(std::cin, input) || input.empty()) {
+            if (std::cin.eof()) {
                 break;
-            else if (std::cin.good() && !input.empty() && (input >= 0 && input <= 7)) {
+            }
+            std::cout << "Invalid index; please re-enter." << std::endl;
+            continue;
+        }
+        
+        // Check if the input is a number and within the valid range
+        bool isNumber = true;
+        while (input[++i] != '\0') {
+            if (!std::isdigit(input[i])) {
+                isNumber = false;
+                break;
+            }
+        }
+        i = -1;
+
+        if (isNumber && !isEmptyOrWhitespace(input)) {
+            std::stringstream strToNum;
+            strToNum << input;
+            strToNum >> index;
+            if (index >= 0 && index <= 7) {
                 valid = true;
             } else {
-                //reset the buffer's state and empty
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
                 std::cout << "Invalid index; please re-enter." << std::endl;
             }
-        } while (!valid);
-        return (input);
-    }
+        } else {
+            std::cout << "Invalid index; please re-enter." << std::endl;
+        }
+        
+    } while (!valid);
+
+    return index;
+}
 
 void    PhoneBook::search(void) const
 {
@@ -57,8 +81,7 @@ void    PhoneBook::search(void) const
     index = this->_readIndex();
     if (index != -1)
         this->_contacts[index].display(index);
-    std::cout << "HEY!" << std::endl;
-        // Handle remaining input after reading the index to prevent leftover newline issues
+    // Handle remaining input after reading the index to prevent leftover newline issues
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 

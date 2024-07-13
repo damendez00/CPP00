@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:04:43 by damendez          #+#    #+#             */
-/*   Updated: 2024/07/12 13:15:44 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/13 12:11:33 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ void    Contact::display(int index) const {
     std::cout << std::endl;
 }
 
+bool isEmptyOrWhitespace(const std::string& str) {
+    for (size_t i = 0; i < str.length(); ++i) {
+        if (!std::isspace(str[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
 std::string Contact::_getInput(std::string str) const {
     std::string input = "";
     bool        valid = false;
@@ -65,13 +74,7 @@ std::string Contact::_getInput(std::string str) const {
         std::getline(std::cin, input);
         if (std::cin.eof())
             break;
-        // if (std::cin.good() && !input.empty())
-        //     valid = true;
-        // else {
-        //     std::cin.clear();
-        //     std::cout << "Invalid input; please try again." << std::endl;
-        // }
-        else if (std::cin.good() && !input.empty())
+        else if (std::cin.good() && !input.empty() && !isEmptyOrWhitespace(input))
             valid = true;
     } while (!valid);
     return (input);
@@ -89,7 +92,7 @@ std::string Contact::_getNumber(std::string str) const {
         std::getline(std::cin, input);
         if (std::cin.eof())
             break;
-        else if (std::cin.good() && !input.empty()){
+        else if (std::cin.good() && !input.empty() && !isEmptyOrWhitespace(input)){
             valid = true;
             while (i < input.length()) {
                 if (!isdigit(input[i])) {
@@ -110,7 +113,6 @@ std::string Contact::_getNumber(std::string str) const {
 
 void    Contact::init(void)
 {
-    //std::cin.ignore();
     this->_firstName = this->_getInput("Please enter a first name: ");
     this->_lastName = this->_getInput("Please enter last name: ");
     this->_nickname = this->_getInput("Please enter a nickname: ");

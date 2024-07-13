@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:25:25 by damendez          #+#    #+#             */
-/*   Updated: 2024/06/28 16:56:32 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/13 12:05:04 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iomanip>  // manage input/output formatting
 #include <iostream>
 #include <limits>
+#include <sstream> // stringstream
+#include <cctype>  // For std::isspace
 
 class Contact
 {
@@ -39,5 +41,7 @@ class Contact
         void    display(int index) const;
         void    setIndex(int i);
 };
+
+bool isEmptyOrWhitespace(const std::string& str);
 
 #endif
