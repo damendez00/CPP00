@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 21:27:00 by damendez          #+#    #+#             */
-/*   Updated: 2024/07/12 13:03:31 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:52:46 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void)
     std::string input = "";
     PhoneBook   phoneBook;
     
-    std::cout << "Enter a command: 'ADD', 'SEARCH', 'EXIT'." << std::endl;
+    std::cout << "Enter a command: 'ADD', 'SEARCH', or 'EXIT'." << std::endl;
     while (input.compare("EXIT") != 0)
     {
         std::cout << ">" << std::flush;

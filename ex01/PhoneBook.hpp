@@ -6,7 +6,7 @@
 /*   By: damendez <damendez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:48:33 by damendez          #+#    #+#             */
-/*   Updated: 2024/07/03 16:31:31 by damendez         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:54:40 by damendez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class PhoneBook
     private:
         Contact         _contacts[8];
         int             _readIndex(void) const;
-        int             contactsNum;
 
     public:
         PhoneBook();
